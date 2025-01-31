@@ -46,6 +46,29 @@ createTable(data){
     throw new Error('Метод createTable должен быть переопределен в дочернем классе');
 }
 
-
+// Построение графика
+drawChart(labels, datasets, datasetLabels){
+    if(this.chartInstance){
+        this.chartInstance.destroy();
+    }
+    this.chartInstance = new Chart(this.chartCanvas, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: datasets.map((data, index) => ({
+                label: datasetLabels[index],
+                data: data,
+                borderColor: this.getRandomColor(),
+                fill: false,
+            }))
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {display: true},
+            },
+        },
+    });
+}
 
 }

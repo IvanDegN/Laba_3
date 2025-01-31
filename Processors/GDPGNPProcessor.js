@@ -50,5 +50,15 @@ createTable(data, growthRates){
     return table;
 }
 
+// Вычисление процентных изменений
+calculateGrowthRates(values){
+    return values.map((value, index) =>{
+        if (index === 0 ) return 0;
+        return ((value - values[index - 1]) / values[index - 1] ) * 100;
+    } );
+}
+
+
+
 }
 

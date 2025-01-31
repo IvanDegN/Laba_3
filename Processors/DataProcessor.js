@@ -1,6 +1,6 @@
 // DataPocessor.js
 
-export class DataPocessor {
+export class DataProcessor {
     constructor(fileInputId, outputDivId, chartCanvasId){
         this.fileInput = document.getElementById(fileInputId);
         this.outputDiv = document.getElementById(outputDivId);

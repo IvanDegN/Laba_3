@@ -1,6 +1,6 @@
 // GDPGNPProcessor.js
 
-import {DataProcessor} from "./DataProcessor"
+import {DataProcessor} from "./DataProcessor.js"
 
 export class GDPGNPProcessor extends DataProcessor{
     constructor(fileInputId, outputDivId, chartCanvasId){
@@ -28,7 +28,7 @@ createTable(data, growthRates){
     const tbody = document.createElement('tbody');
 
     const headerRow = document.createElement('tr');
-    ['Год', 'ВВП', 'Процент роста'].forEach(header => {
+    ['Год', 'ВВП', 'ВНП', 'Процент роста'].forEach(header => {
         const th = document.createElement('th');
         th.textContent = header;
         headerRow.appendChild(th);

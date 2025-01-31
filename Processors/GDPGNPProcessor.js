@@ -21,5 +21,34 @@ parseData(text){
     });
 }
 
+// Создание таблицы
+createTable(data, growthRates){
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const tbody = document.createElement('tbody');
+
+    const headerRow = document.createElement('tr');
+    ['Год', 'ВВП', 'Процент роста'].forEach(header => {
+        const th = document.createElement('th');
+        th.textContent = header;
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+
+    data.forEach((row, index) =>{
+        const tr = document.createElement('tr');
+        [row.year, row.gdp, row.gnp, growthRates[index].toFixed(2)].forEach(value => {
+            const td = document.createElement('td');
+            td.textContent = value;
+            tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+    } );
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    return table;
+}
+
 }
 

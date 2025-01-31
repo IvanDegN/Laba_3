@@ -26,4 +26,34 @@ export class PopulationProcessor extends DataProcessor {
             };
         });
     }
+    // Создание таблицы
+    createTable(regions, populationData, filteredYears) {
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+
+        const headerRow = document.createElement('tr');
+        ['Регион', ...filteredYears.map(year => `Год ${year}`)].forEach(header => {
+            const th = document.createElement('th');
+            th.textContent = header;
+            headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+
+        regions.forEach((region, index) => {
+            const tr = document.createElement('tr');
+            const rowData = [region, ...filteredYears.map(yearIndex => populationData[index][yearIndex - 1])];
+            rowData.forEach(value => {
+                const td = document.createElement('td');
+                td.textContent = value || '-';
+                tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+        });
+
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        return table;
+    }
+
 }

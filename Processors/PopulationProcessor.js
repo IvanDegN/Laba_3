@@ -68,5 +68,41 @@ export class PopulationProcessor extends DataProcessor {
     });
     return { region: maxDeclineRegion, decline: maxDecline };
 }
-
+// Обработка данных
+async process() {
+    try {
+        this.clearOutput();
+        const text = await this.readFile();
+        const data = this.parseData(text);
+        if (!data || !data.length || !data[0].region || !data[0].years) {
+            this.outputDiv.textContent = 'Неверный формат данных.';
+            return;
+        }
+        const regions = data.map(row => row.region);
+        const populationData = data.map(row => row.years);
+        const numberOfYears = populationData[0]?.length || 0;
+        if (numberOfYears === 0) {
+            this.outputDiv.textContent = 'Данные о численности населения отсутствуют.';
+            return;
+        }
+        const filteredYears = Array.from({ length: numberOfYears }, (_, i) => i + 1).filter(yearIndex => {
+            return populationData.every(regionData =>
+                regionData[yearIndex - 1] !== null &&
+                regionData[yearIndex - 1] !== undefined &&
+                !isNaN(regionData[yearIndex - 1])
+            );
+        });
+        const table = this.createTable(regions, populationData, filteredYears);
+        this.outputDiv.appendChild(table);
+        this.drawChart(filteredYears, populationData.map(data => filteredYears.map(yearIndex => data[yearIndex - 1])), regions);
+        const { region: maxDeclineRegion, decline: maxDecline } = this.findMaxDeclineRegion(populationData, regions);
+        const declineInfo = document.createElement('p');
+        declineInfo.textContent = `Самое большое снижение численности за ${filteredYears.length} лет произошло в регионе: ${maxDeclineRegion} (${maxDecline.toFixed(2)} человек)`;
+        this.outputDiv.appendChild(declineInfo);
+    } catch (error) {
+        console.error(error);
+        alert('Ошибка при обработке данных: ' + error.message);
+    }
 }
+}
+

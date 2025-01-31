@@ -58,7 +58,30 @@ calculateGrowthRates(values){
     } );
 }
 
+// Обработка данных
+async process(){
+    try{
+        this.clearOutput();
+        const text = await this.readFile();
+        const data = this.parseData(text);
+        if(!data || !data.length || !data[0].year || !data[0].gdp || !data[0].gnp){
+            this.outputDiv.textContent = 'Неверный формат данных';
+            return;
+        }
+        const gdpValues = data.map(row => parseFloat(row.gdp));
+        const growthRates = this.calculateGrowthRates(gdpValues);
+        const table = this.createTable(data, growthRates);
+        this.outputDiv.appendChild(table);
+        const years = data.map(row => row.year);
+        const gnpValues = data.map(row => parseFloat(row.gnp));
+        this.drawChart(years, [gdpValues, gnpValues,], ['ВВП', 'ВНП']);
 
+    } catch (error){
+        console.error(error);
+        alert('Ошибка при обработке данных: ' + error.message);
+    }
+    
+}
 
 }
 

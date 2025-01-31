@@ -55,5 +55,18 @@ export class PopulationProcessor extends DataProcessor {
         table.appendChild(tbody);
         return table;
     }
+ // Метод для вычисления региона с максимальным снижением численности
+ findMaxDeclineRegion(populationData, regions) {
+    let maxDecline = 0;
+    let maxDeclineRegion = '';
+    populationData.forEach((data, index) => {
+        const decline = data[0] - data[data.length - 1];
+        if (decline > maxDecline) {
+            maxDecline = decline;
+            maxDeclineRegion = regions[index];
+        }
+    });
+    return { region: maxDeclineRegion, decline: maxDecline };
+}
 
 }

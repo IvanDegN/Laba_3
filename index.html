@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анализ данных</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <!-- Подключение библиотеки Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <section id="gdp-gnp-section">
+            <h2>Анализ ВВП и ВНП России за последние 15 лет</h2>
+            <div class="file-input-container">
+                <input type="file" id="gdp-gnp-file">
+                <button class="custom-file-button">Обзор...</button>
+            </div>
+            <button id="process-gdp-gnp">Обработать данные</button>
+            <div id="gdp-gnp-output"></div>
+            <canvas id="gdp-gnp-chart"></canvas>
+        </section>
+
+        <section id="population-section">
+            <h2>Анализ численности населения по субъектам РФ за последние 15 лет</h2>
+            <div class="file-input-container">
+                <input type="file" id="population-file">
+                <button class="custom-file-button">Обзор...</button>
+            </div>
+            <button id="process-population">Обработать данные</button>
+            <div id="population-output"></div>
+            <canvas id="population-chart"></canvas>
+        </section>
+    </div>
+
+    
+    <script type="module" src="main.js" ></script>
+    <script type="module" src="./Processors/PopulationProcessor.js" ></script>
+    <script type="module" src="./Processors/DataProcessor.js" ></script>
+    <script type="module" src="./Processors/GDPGNPProcessor.js" ></script>
+</body>
+</html>

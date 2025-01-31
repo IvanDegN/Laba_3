@@ -1,0 +1,236 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+    display: block;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+canvas {
+    margin-top: 20px;
+}
+
+/* Стиль для контейнера кнопки "Обзор..." */
+.file-input-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* Скрытие оригинальной кнопки выбора файла */
+.file-input-container input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* Кастомная кнопка "Обзор..." */
+.custom-file-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.custom-file-button:hover {
+    background-color: #0056b3;
+}
+
+.custom-file-button:active {
+    transform: scale(0.98);
+}
+
+/* Дополнительные улучшения для кнопок */
+button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Стиль для таблиц */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+table th,
+table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+#population-section {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+/* Стили для таблицы */
+#population-section table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    margin: 20px 0;
+    table-layout: fixed;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#population-section th,
+#population-section td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#population-section th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+#population-section tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#population-section tr:hover {
+    background-color: #e0f7fa;
+}
+
+@media (max-width: 1024px) {
+    #population-section th,
+    #population-section td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    #population-section table,
+    #population-section thead,
+    #population-section tbody,
+    #population-section th,
+    #population-section td,
+    #population-section tr {
+        display: block;
+    }
+
+    #population-section thead tr {
+        display: none;
+    }
+
+    #population-section td {
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+        border: none;
+        background-color: #fff;
+        margin-bottom: 8px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #population-section td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: #007bff;
+    }
+}
+
+@media (max-width: 480px) {
+    #population-section td {
+        font-size: 12px;
+        padding-left: 40%;
+    }
+
+    #population-section td::before {
+        font-size: 12px;
+    }
+}

@@ -30,4 +30,22 @@ getRandomColor(){
     return `rgba(${Math.floor(Math.random() * 256 )}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256 )}, 1)`;
 }
 
+// Очистка вывода
+clearOutput(){
+    this.outputDiv.innerHTML = '';
+}
+
+// Абстрактный метод для парсинга данных
+parseData(text){
+    throw new Error('Метод parseData должен быть переопределен в дочернем классе');
+
+}
+
+// Абстрактный метод для создания таблицы
+createTable(data){
+    throw new Error('Метод createTable должен быть переопределен в дочернем классе');
+}
+
+
+
 }
